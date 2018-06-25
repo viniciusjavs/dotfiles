@@ -11,3 +11,10 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 ;;(package-refresh-contents)
+
+
+
+;;; Company-Mode: Modular in-buffer completion framework for Emacs.
+;;; It uses company-clang as its back-end.
+;;(package-install 'company)
+(add-hook 'after-init-hook 'global-company-mode)
