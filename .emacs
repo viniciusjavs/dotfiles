@@ -40,10 +40,16 @@
 
 
 ;;; Company Irony: A completion backend for Irony-Mode.
+;;; Company Irony C Headers: A Company-Mode backend for C/C++ header files that works with Irony-Mode.
 ;;(package-install 'company-irony)
+;;(package-install 'company-irony-c-headers)
 ;;
+;; Load with `irony-mode` as a grouped backend.
 ;; Remove company-clang to ensure company-irony.
 (eval-after-load 'company
   '(and
-    (add-to-list 'company-backends 'company-irony)
-    (delete 'company-clang company-backends)))
+    (add-to-list
+     'company-backends '(company-irony-c-headers company-irony))
+    (delete
+     'company-clang company-backends)))
+
