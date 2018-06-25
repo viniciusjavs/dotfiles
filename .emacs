@@ -18,3 +18,23 @@
 ;;; It uses company-clang as its back-end.
 ;;(package-install 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+
+
+;;; Irony-Mode: A C/C++ minor mode powered by libclang.
+;;; It improves code completion and provide syntax error highlighting.
+;;; On the first run, build and install irony-server: M-x irony-install-server RET.
+;;(package-install 'irony)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; Windows performance tweaks
+;;
+(when (boundp 'w32-pipe-read-delay)
+  (setq w32-pipe-read-delay 0))
+;; Set the buffer size to 64K on Windows (from the original 4K)
+(when (boundp 'w32-pipe-buffer-size)
+  (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
+  
