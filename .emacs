@@ -53,3 +53,11 @@
     (delete
      'company-clang company-backends)))
 
+
+;;; Flycheck-Irony: Flycheck checker for irony-mode.
+;;(package-install 'flycheck)
+;;(package-install 'flycheck-irony)
+(global-flycheck-mode)
+
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
