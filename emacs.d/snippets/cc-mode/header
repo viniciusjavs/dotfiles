@@ -1,0 +1,16 @@
+# name: .cpp file header
+# key: header
+# --
+// Copyright (C) `(format-time-string "%Y")` `user-full-name`
+// Author: `(format "%s <%s>" user-full-name user-mail-address)`
+// Timestamp: `(format-time-string "%d %b %Y")`
+
+/*
+*/
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+	$0
+}
