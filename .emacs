@@ -70,3 +70,7 @@
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
+
+
+;;; Change Emacs appearance and behavior.
+(set-default 'truncate-lines t)
