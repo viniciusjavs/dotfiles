@@ -74,3 +74,4 @@
 
 ;;; Change Emacs appearance and behavior.
 (set-default 'truncate-lines t)
+(load-theme 'misterioso t)
