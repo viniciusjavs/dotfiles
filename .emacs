@@ -107,6 +107,22 @@
 (add-hook 'c-mode-common-hook (lambda () (ispell-change-dictionary "english") (flyspell-prog-mode)))
 
 
+;;; Compile: Customize compile command.
+(add-hook 'c++-mode-hook
+	  (lambda ()
+ 	    (set (make-local-variable 'compile-command)
+ 		 (let ((file (file-name-nondirectory buffer-file-name)))
+ 		   (format "clang++ -MJ %s.o.json -Wall -Wextra -std=c++17 -g -o %s %s"
+ 			   (file-name-sans-extension file)
+			   (file-name-sans-extension file)
+ 			   file)))))
+
+;; Merge and create compile_commands.json.
+(add-hook 'compilation-finish-functions
+	  (lambda (buffer str)
+	    (shell-command-to-string "sed -e '1s/^/[\\n/' -e '$s/,$/\\n]/' *.o.json > compile_commands.json")))
+
+
 ;;; Change Emacs appearance and behavior.
 ;;;
 (set-default 'inhibit-startup-screen t)
