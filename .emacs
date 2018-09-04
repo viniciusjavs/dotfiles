@@ -88,6 +88,16 @@
 (require 'iedit)
 
 
+;;; Coding style.
+;;; CC-Mode.
+(setq c-default-style '((c++-mode . "stroustrup")
+			(c-mode . "k&r"))
+      c-basic-offset 4)
+(add-hook 'c-mode-common-hook (lambda () (c-toggle-electric-state +1) (c-toggle-auto-newline +1)))
+;;
+(electric-pair-mode 1)
+
+
 ;;; Change Emacs appearance and behavior.
 ;;;
 (set-default 'inhibit-startup-screen t)
