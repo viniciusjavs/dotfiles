@@ -85,5 +85,8 @@
 
 
 ;;; Change Emacs appearance and behavior.
+;;;
+(set-default 'inhibit-startup-screen t)
 (set-default 'truncate-lines t)
 (load-theme 'misterioso t)
+(setq make-backup-files nil) ; Stop creating backup~ files.
