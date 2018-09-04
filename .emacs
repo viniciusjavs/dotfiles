@@ -98,6 +98,11 @@
 (electric-pair-mode 1)
 
 
+;;; ClangFormat: Automatic source code formatting based on Clang.
+;;(package-install 'clang-format)
+(global-set-key [C-tab] 'clang-format-region)
+
+
 ;;; Change Emacs appearance and behavior.
 ;;;
 (set-default 'inhibit-startup-screen t)
