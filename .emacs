@@ -40,18 +40,30 @@
 
 
 ;;; Company Irony: A completion backend for Irony-Mode.
-;;; Company Irony C Headers: A Company-Mode backend for C/C++ header files that works with Irony-Mode.
+;;; Company C Headers: Auto-completion for C/C++ headers using Company.
 ;;(package-install 'company-irony)
-;;(package-install 'company-irony-c-headers)
+;;(package-install 'company-c-headers)
 ;;
 ;; Load with `irony-mode` as a grouped backend.
 ;; Remove company-clang to ensure company-irony.
 (eval-after-load 'company
   '(and
     (add-to-list
-     'company-backends '(company-irony-c-headers company-irony))
+     'company-backends '(company-c-headers company-irony))
     (delete
      'company-clang company-backends)))
+
+;; Setup search paths properly.
+(setq company-c-headers-path-system
+      '("/usr/include/" "/usr/local/include/" "/usr/include/c++/8.2.0"))
+(defun company-c-headers-path-user-irony ()
+  "Return the user include paths for the current buffer."
+  (when irony-mode
+    (or
+     (irony--extract-user-search-paths irony--compile-options
+				       irony--working-directory)
+     '("."))))
+(setq company-c-headers-path-user #'company-c-headers-path-user-irony)
 
 
 ;;; Flycheck-Irony: Flycheck checker for irony-mode.
