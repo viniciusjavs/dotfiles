@@ -83,6 +83,10 @@
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 
+;;; Iedit - Edit multiple regions in the same way simultaneously.
+;;(package-install 'iedit)
+(require 'iedit)
+
 
 ;;; Change Emacs appearance and behavior.
 ;;;
