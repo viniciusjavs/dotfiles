@@ -113,3 +113,5 @@
 (set-default 'truncate-lines t)
 (load-theme 'misterioso t)
 (setq make-backup-files nil) ; Stop creating backup~ files.
+(set-face-italic 'font-lock-comment-face t) ; Put comments in italic.
+(set-default-font "Operator Mono Book 13")
