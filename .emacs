@@ -103,6 +103,10 @@
 (global-set-key [C-tab] 'clang-format-region)
 
 
+;;; Ispell: A program that helps you to correct spelling and typographical errors.
+(add-hook 'c-mode-common-hook (lambda () (ispell-change-dictionary "english") (flyspell-prog-mode)))
+
+
 ;;; Change Emacs appearance and behavior.
 ;;;
 (set-default 'inhibit-startup-screen t)
